@@ -1,6 +1,7 @@
 //Name: Emma Roy
 //Lab: 348 - EC Lab
-//
+// I would like this lab to count towards my test grades, not my lab grades. Thank you!
+
 #include <iostream>
 #include <iomanip> 
 #include <string>
@@ -12,27 +13,27 @@ void invalid(){
 }
 
 double extractNumeric(const string& num){
-  bool has_sign = false;
-  bool is_num = false;
-  bool has_decimal = false;
-  bool is_negative = false;
-  double result = 0.0;
-  double decimal_factor = 0.1;
+  bool has_sign = false;   //checks if there is a + or - in the front
+  bool is_num = false;  //checks if char is a num or not
+  bool has_decimal = false;   //checks if there is a decimal 
+  bool is_negative = false; //checks if its negative
+  double result = 0.0; //converts to double
+  double decimal_factor = 0.1; //rounds the decimal value
 
 
-  if(num.length() > 20){
+  if(num.length() > 20){  //if the number is greater than 20 char constraint
     return -999999.99;
   }
   for (size_t i = 0; i < num.length(); ++i) {
-    char iter = num[i];
+    char iter = num[i];  //we look at every char seperately
 
-    if (i == 0 && (iter == '+' || iter == '-')) {
+    if (i == 0 && (iter == '+' || iter == '-')) { //if char is the first one and equals + or - 
           has_sign = true;
           if (iter == '-') {
               is_negative = true; // marks it as negative
           }
           continue;
-      }else if(i >= 0 && (iter == '+' || iter == '-')){ 
+      }else if(i >= 0 && (iter == '+' || iter == '-')){ //if theres a sign anywhere other than beginning, return an error
         return -999999.99;
       }
       else if(iter >= '0' && iter <= '9'){ //checks to see if the value is a number
@@ -53,7 +54,7 @@ double extractNumeric(const string& num){
         return -999999.99;
       }
     }
-    if(!is_num){
+    if(!is_num){   //returns an error if its is an invalid char
       return -999999.99;
     }
     if(is_negative) {
